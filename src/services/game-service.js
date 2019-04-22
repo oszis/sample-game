@@ -1,48 +1,37 @@
-class GameService {
-	getDialog = () => {
-		return [
-			{
-				author: 'char-1',
-				replic: 'Первая реплика',
-				hasAnswer: false,
-			},
-			{
-				hasAnswer: true,
-				answerList: [
-					{
-						text: 'Ответ, ведущий к 2 реплике',
-						goto: 2,
-						key: 1,
-					},
-					{
-						text: 'Ответ, ведущий к 3 реплике',
-						goto: 3,
-						key: 2,
-					},
-					{
-						text: 'Ответ, ведущий к 4 реплике',
-						goto: 4,
-						key: 3,
-					},
-				],
-			},
-			{
-				author: 'char-1',
-				replic: 'Вторая реплика',
-				hasAnswer: false,
-			},
-			{
-				author: 'char-1',
-				replic: 'Третья реплика',
-				hasAnswer: false,
-			},
-			{
-				author: 'char-1',
-				replic: 'Четвертая реплика',
-				hasAnswer: false,
-			},
-		]
-	}
-}
+import axios from 'axios';
 
-export default GameService;
+export default class GameService {
+	getData(url) {
+		return axios.get(url);
+	}
+
+	getRoutes() {
+		return this.getData('/data/game-routes.json');
+	}
+
+	getSettings() {
+		return this.getData('/data/settings.json');
+	}
+
+
+	getRoom(roomId) {
+		return this.getRoutes()
+			.then(({ data }) => {
+				return data.currentRoom;
+			});
+	};
+
+	getDialog(dialogId) {
+		return false;
+	}
+
+	getCharacter = (charId) => {
+		return this.getData('/data/characters.json')
+			.then(({ data }) => {
+				return data[charId];
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+	};
+}

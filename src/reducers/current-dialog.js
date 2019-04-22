@@ -1,4 +1,4 @@
-const currentDialog = (state = [], action) => {
+const currentDialog = (state = {}, action) => {
 	switch (action.type) {
 		case 'LOAD_DIALOG':
 			return {

@@ -1,0 +1,14 @@
+.character {
+	&__image {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 100px;
+		height: 300px;
+		opacity: 0;
+		background-color: red;
+		color: white;
+		transition: opacity 0.2s;
+		cursor: pointer;
+	}
+}

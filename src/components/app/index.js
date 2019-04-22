@@ -16,7 +16,8 @@ class App extends Component {
 					<Route path="/" component={MenuPage} exact/>
 					<Route path="/game/" component={GamePage} exact/>
 					<Route path="/settings/" component={SettingsPage} exact/>
-					<Route path="/save-load/" component={SaveLoadPage} exact/>
+					<Route path="/save-game" component={SaveLoadPage} exact/>
+					<Route path="/load-game" component={SaveLoadPage} exact/>
 					<Route path="/new-game/" component={GamePage} exact/>
 					<Route path="/game/:id?" render={({ match }) => {
 						return (

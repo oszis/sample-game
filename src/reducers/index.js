@@ -9,6 +9,7 @@ import gameRoutes from './game-routes';
 import settings from './settings';
 import userData from './user-data';
 import loadGame from './game-load';
+import characters from './characters';
 
 const getReducers = () => {
 	return combineReducers({
@@ -20,6 +21,7 @@ const getReducers = () => {
 		gameRoutes,
 		settings,
 		userData,
+		characters,
 		loadGame
 	});
 };

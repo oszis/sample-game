@@ -1,11 +1,24 @@
 let initialState = {
-	currentDialog: [],
+	currentDialog: {},
 	roomsList: [],
 	currentRoom: 0,
-	inventory: [],
+	inventory: {
+		isOpen: false,
+		items: [
+			{
+				id: 1,
+				image: '#',
+				name: 'Имя',
+				description: 'Описание',
+			},
+		],
+	},
 	messages: [],
-	gameRoutes: [],
-	settings: {},
+	gameRoutes: {},
+	characters: {},
+	settings: {
+		"volume": 100
+	},
 	loadGame: false,
 	userData: {
 		Time: '00:00',

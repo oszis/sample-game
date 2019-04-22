@@ -2,7 +2,7 @@ import React from 'react';
 
 const InventoryItem = ({ item }) => {
 	return (
-		<div className="inventory__item" key={item.id}>
+		<div className="inventory__item">
 			<div className="inventory__item-image">
 				<img src={item.image} alt={item.name}/>
 			</div>

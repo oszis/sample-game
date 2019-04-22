@@ -1,5 +1,10 @@
-const inventory = (state = [], action) => {
+const inventory = (state = {
+	isOpen: false,
+	items: []
+}, action) => {
 	switch (action.type) {
+		case 'INVENTORY_TOGGLE':
+			return action.payload;
 		case 'INVENTORY_GET_ITEMS':
 			return state;
 		case 'INVENTORY_ADD_ITEM':

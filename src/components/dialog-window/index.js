@@ -1,98 +1,53 @@
 import React, { Component } from 'react';
-
-import { connect } from 'react-redux';
-
 import './index.scss';
-
-import { withGameService } from '../hoc';
 import { DialogWindowRender, DialogAnswerListRender } from './render';
 
 class DialogWindow extends Component {
 	state = {
-		replicsArr: [],
-		currentReplicIndex: 0,
+		dialog: {},
+		currentDialog: {},
+		currentReplic: 0,
+		dataLoaded: false,
 	};
 
 	componentDidMount() {
-		const { gameService } = this.props;
-
-		const data = gameService.getDialog();
-
-		this.setState({
-			replicsArr: data,
-		});
-
-		this.props.dialogLoaded(data);
+		this.getDialogObj(this.props);
 	}
 
-	onAnswer = (index) => {
+	getDialogObj = (dialogObj) => {
+		const { dialog } = dialogObj;
+
 		this.setState({
-			currentReplicIndex: index,
+			dialog: dialog,
+			currentDialog: dialog,
+			dataLoaded: true,
 		});
+
+		console.log(this.state.dialog);
 	};
 
-	onGoToPrevReplic = () => {
-		const { currentReplicIndex } = this.state;
+	playReplics(replicList) {
+		const { currentReplic } = this.state;
+	}
 
-		if (currentReplicIndex > 0) {
-			this.setState({
-				currentReplicIndex: currentReplicIndex - 1,
-			});
-		} else {
-			this.setState({
-				currentReplicIndex: 0,
-			});
-		}
-	};
-
-	onGoToNextReplic = () => {
-		const { replicsArr, currentReplicIndex } = this.state;
-
-		if (currentReplicIndex < replicsArr.length - 1) {
-			this.setState({
-				currentReplicIndex: currentReplicIndex + 1,
-			});
-		} else {
-			this.setState({
-				currentReplicIndex: -1,
-			});
-		}
-	};
-
-	onEndDialog = () => {
-		/*todo: написать событие по завершению диалога*/
+	goToNextReplic = () => {
+		console.log('go to next replic');
 	};
 
 	render() {
-		const { currentReplicIndex, replicsArr } = this.state;
-
-		if (replicsArr.length === 0 || currentReplicIndex === -1) {
-			return false;
-		}
-
-		const { hasAnswer, answerList = [] } = replicsArr[currentReplicIndex];
-
-		const answers = hasAnswer ? (
-			<DialogAnswerListRender
-				answerList={answerList}
-				onAnswerClick={this.onAnswer}/>
-		) : null;
-
-		const dialogWindow = answers ? null :
-			(<DialogWindowRender
-				currentReplic={replicsArr[currentReplicIndex]}
-				goToNextReplic={this.onGoToNextReplic}/>);
+		if (!this.state.dataLoaded) return false;
 
 		return (
 			<div className="dialog-window">
-				{answers}
-				{dialogWindow}
+				{/*<DialogWindowRender
+					replicList={replics}
+					goToNextReplic={this.goToNextReplic}/>*/}
 			</div>
 		);
 	}
 }
 
-const mapStateToProps = (state) => {
+/*const mapStateToProps = (state) => {
 	return {
 		replicsArr: state.replicsArr,
 	};
@@ -107,6 +62,8 @@ const mapDispatchToProps = (dispatch) => {
 			});
 		},
 	};
-};
+};*/
 
-export default withGameService(connect(mapStateToProps, mapDispatchToProps)(DialogWindow));
+/*export default withGameService(connect(mapStateToProps, mapDispatchToProps)(DialogWindow));*/
+
+export default DialogWindow;

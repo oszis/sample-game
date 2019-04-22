@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import DialogWindow from '../../../dialog-window';
 import GameLoader from '../../../game-loader';
 import Inventory from '../../../inventory';
 
@@ -13,11 +12,32 @@ class GamePage extends Component {
 	state = {
 		currentRoom: this.props.match.params.id,
 		loadGame: false,
+		inventoryIsOpen: false,
 	};
 
+	/*onEscKeyPress = (e) => {
+		const { inventoryIsOpen } = this.state;
+		const { history } = this.props;
+
+		if (!inventoryIsOpen && e.key === 'Escape') {
+			history.push('/save-game');
+		}
+	};*/
+
 	componentWillMount() {
-		this.props.gameLoading(true);
+		const { loadGame, inventory } = this.props;
+
+		this.setState({
+			loadGame: loadGame,
+			inventoryIsOpen: inventory.isOpen,
+		});
+
+		/*document.addEventListener('keydown', this.onEscKeyPress);*/
 	}
+
+	/*componentWillUnmount() {
+		document.removeEventListener('keydown', this.onEscKeyPress);
+	}*/
 
 	componentWillReceiveProps(nextProps) {
 		const { currentRoom } = this.state;
@@ -32,6 +52,7 @@ class GamePage extends Component {
 
 		this.setState({
 			loadGame: nextProps.loadGame,
+			inventoryIsOpen: nextProps.inventory.isOpen
 		});
 	}
 
@@ -53,8 +74,7 @@ class GamePage extends Component {
 					<p>Здесь будет находиться инвентарь персонажа, комнаты и диалоговое окно</p>
 					<p>Текущая комната {currentRoom}</p>
 				</div>
-				<Inventory />
-				<DialogWindow/>
+				<Inventory/>
 			</div>
 		);
 	};
@@ -62,7 +82,8 @@ class GamePage extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		loadGame: state.loadGame
+		loadGame: state.loadGame,
+		inventory: state.inventory,
 	};
 };
 
@@ -77,7 +98,7 @@ const mapDispatchToProps = (dispatch) => {
 		gameLoading: (gameLoad) => {
 			dispatch({
 				type: 'GAME_LOADED',
-				payload: gameLoad
+				payload: gameLoad,
 			});
 		},
 	};
