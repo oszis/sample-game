@@ -10,10 +10,13 @@
     currentRoom: Number,
     inventory: Array(Objects),
     messages: Array(Objects),
-    gameRoutes: Array(Objects) 
+    gameRoutes: Array(Objects), 
     settings: Object,
-    Time: String,
-    Date: String
+    loadGame: Boolean,
+    userData: {
+        Time: String,
+        Date: String
+    }
 }
 ```
 
