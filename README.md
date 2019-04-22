@@ -3,6 +3,7 @@
 <h2>Шаблоны json файла:</h2>
 
 <h3>Главный шаблон</h3>
+
 ```
 {
     roomsList: Array(Objects),
@@ -17,15 +18,16 @@
 ```
 
 <h4>Шаблон комнаты</h4>
+
 ```
-[roomsList: {
+{
     name: String,
     id: Number,
     dialogsList: Array(Objects),
     itemsList: Array(Objects),
     charactersList: Array(Objects),
     RoomLinks: Array(Objects)
-}]
+}
 ```
 
 <h5>dialogsList</h5>
@@ -55,6 +57,7 @@ charactersList: [
 ```
 
 <h5>replicsList</h5>
+
 ```
 replicsList: [
     {
@@ -67,6 +70,7 @@ replicsList: [
 ```
 
 <h5>answerList</h5>
+
 ```
 answerList: [
     {
@@ -90,6 +94,7 @@ inventory: [
 ```
 
 <h4>Шаблон сообщений (messages)</h4>
+
 ```
 messages: [
     {
@@ -101,6 +106,7 @@ messages: [
 ```
 
 <h4>Шаблон путей сюжета (gameRoutes)</h4>
+
 ```
 gameRoutes: [
     {
