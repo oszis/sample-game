@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import DialogWindow from '../../../dialog-window';
 import GameLoader from '../../../game-loader';
+import Inventory from '../../../inventory';
 
 import './index.scss';
 import { HomeRoom, CityRoom } from '../../rooms';
@@ -41,17 +42,18 @@ class GamePage extends Component {
 
 		return (
 			<div className="game-page">
+				<Switch>
+					<Route path="/game/1" component={HomeRoom}/>
+					<Route path="/game/2" component={CityRoom}/>
+					<Route component={HomeRoom}/>
+				</Switch>
 				{loader}
 				<div className="game-page__popup">
 					<h1>Страница игры.</h1>
 					<p>Здесь будет находиться инвентарь персонажа, комнаты и диалоговое окно</p>
 					<p>Текущая комната {currentRoom}</p>
 				</div>
-				<Switch>
-					<Route path="/game/1" component={HomeRoom}/>
-					<Route path="/game/2" component={CityRoom}/>
-					<Route component={HomeRoom}/>
-				</Switch>
+				<Inventory />
 				<DialogWindow/>
 			</div>
 		);
