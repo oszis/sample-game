@@ -1,12 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { HashRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import initialState from './reducers/initial-state';
+import GameService from './services/game-service';
+import { GameServiceProvider } from './components/game-service-context';
+import initStore from './store';
+import App from './components/app';
+import ErrorBoundry from './components/error-boundry';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+import './styles/common.scss';
+
+const store = initStore(initialState);
+window.store = store;
+
+const gameService = new GameService();
+
+ReactDOM.render(
+	<Provider store={store}>
+		<ErrorBoundry>
+			<GameServiceProvider value={gameService}>
+				<Router>
+					<App/>
+				</Router>
+			</GameServiceProvider>
+		</ErrorBoundry>
+	</Provider>,
+	document.getElementById('root')
+);

@@ -1,0 +1,55 @@
+.dialog-window {
+	position: absolute;
+	z-index: 100;
+
+	&__container {
+		position: fixed;
+		left: 30px;
+		right: 30px;
+		bottom: 30px;
+		z-index: 100;
+		border: 2px solid black;
+		background-color: white;
+	}
+
+	&__overlay {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 2;
+		cursor: pointer;
+	}
+
+	&__answer-list {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 99;
+		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(0,0,0,0.5);
+	}
+
+	&__answer {
+		display: block;
+		width: 60vw;
+		background-color: rgba(0,0,0,0.8);
+		color: rgba(white, 0.7);
+		border: none;
+		text-align: center;
+		margin-bottom: 5px;
+		padding: 10px;
+		cursor: pointer;
+		transition: background-color 0.2s;
+
+		&:hover {
+			background-color: rgba(0,0,0,0.6);
+		}
+	}
+}
