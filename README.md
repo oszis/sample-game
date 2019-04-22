@@ -18,7 +18,7 @@
 
 <h4>Шаблон комнаты</h4>
 ```
-{
+roomsList: {
     name: String,
     id: Number,
     dialogsList: Array(Objects),
