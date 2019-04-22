@@ -18,14 +18,14 @@
 
 <h4>Шаблон комнаты</h4>
 ```
-roomsList: {
+[roomsList: {
     name: String,
     id: Number,
     dialogsList: Array(Objects),
     itemsList: Array(Objects),
     charactersList: Array(Objects),
     RoomLinks: Array(Objects)
-}
+}]
 ```
 
 <h5>dialogsList</h5>
