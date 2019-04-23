@@ -1,7 +1,7 @@
 let initialState = {
 	currentDialog: {},
 	roomsList: [],
-	currentRoom: 0,
+	currentRoom: 1,
 	inventory: {
 		isOpen: false,
 		items: [
@@ -19,7 +19,7 @@ let initialState = {
 	settings: {
 		"volume": 100
 	},
-	loadGame: false,
+	gameLoaded: false,
 	userData: {
 		Time: '00:00',
 		Date: '1 января 2019',

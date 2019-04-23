@@ -1,43 +1,35 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import GameLoader from '../../../game-loader';
 import Inventory from '../../../inventory';
 
+import Room from '../../../room';
 import './index.scss';
-import { HomeRoom, CityRoom } from '../../rooms';
 
 class GamePage extends Component {
 	state = {
 		currentRoom: this.props.match.params.id,
 		loadGame: false,
+		gameLoaded: false,
 		inventoryIsOpen: false,
+		roomsList: null,
+		characters: {},
 	};
 
-	/*onEscKeyPress = (e) => {
-		const { inventoryIsOpen } = this.state;
-		const { history } = this.props;
+	componentDidMount() {
+		this._isMounted = true;
 
-		if (!inventoryIsOpen && e.key === 'Escape') {
-			history.push('/save-game');
-		}
-	};*/
-
-	componentWillMount() {
-		const { loadGame, inventory } = this.props;
+		const { currentRoom, gameLoaded, loadGame, inventory, characters, roomsList } = this.props;
 
 		this.setState({
-			loadGame: loadGame,
+			loadGame,
+			roomsList,
+			currentRoom,
+			characters,
 			inventoryIsOpen: inventory.isOpen,
 		});
-
-		/*document.addEventListener('keydown', this.onEscKeyPress);*/
 	}
-
-	/*componentWillUnmount() {
-		document.removeEventListener('keydown', this.onEscKeyPress);
-	}*/
 
 	componentWillReceiveProps(nextProps) {
 		const { currentRoom } = this.state;
@@ -49,26 +41,37 @@ class GamePage extends Component {
 
 			this.props.roomChanged(Number(nextProps.match.params.id));
 		}
-
-		this.setState({
-			loadGame: nextProps.loadGame,
-			inventoryIsOpen: nextProps.inventory.isOpen
-		});
 	}
 
 	render() {
-		const { currentRoom, loadGame } = this.state;
+		const { gameLoaded } = this.props;
+		const { currentRoom, roomsList, characters } = this.state;
 
-		const loader = loadGame ? (<GameLoader/>) : null;
+		if (!gameLoaded) {
+			return (<Redirect to="/"/>);
+		}
+
+		const roomsArr = roomsList ? (roomsList.map((item, index) => {
+			return (
+				<Route
+					path={`/game/${item.index.toString()}`}
+					exact
+					render={(props) =>
+						(<Room
+							{...props}
+							state={item}/>)
+					}
+					key={index}/>
+			);
+		})) : null;
 
 		return (
 			<div className="game-page">
-				<Switch>
-					<Route path="/game/1" component={HomeRoom}/>
-					<Route path="/game/2" component={CityRoom}/>
-					<Route component={HomeRoom}/>
-				</Switch>
-				{loader}
+				<div className="game-page__rooms">
+					<Switch>
+						{roomsArr}
+					</Switch>
+				</div>
 				<div className="game-page__popup">
 					<h1>Страница игры.</h1>
 					<p>Здесь будет находиться инвентарь персонажа, комнаты и диалоговое окно</p>
@@ -82,7 +85,9 @@ class GamePage extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		loadGame: state.loadGame,
+		currentRoom: state.currentRoom,
+		gameLoaded: state.gameLoaded,
+		roomsList: state.roomsList,
 		inventory: state.inventory,
 	};
 };

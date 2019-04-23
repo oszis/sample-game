@@ -1,4 +1,4 @@
-const loadGame = (state = false, action) => {
+const gameLoaded = (state = false, action) => {
 	switch (action.type) {
 		case 'GAME_LOADED':
 			return action.payload;
@@ -7,4 +7,4 @@ const loadGame = (state = false, action) => {
 	}
 };
 
-export default loadGame;
+export default gameLoaded;

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { withGameService } from '../hoc';
-import CharacterAnimation from './character-animation';
-import DialogWindow from '../dialog-window';
 import './index.scss';
+import CharacterRender from './render';
 
 /*
 	todo: переписать стейт в стор,
@@ -23,7 +22,7 @@ class Character extends Component {
 	};
 
 	componentDidMount() {
-		this.updateCharacter();
+		//this.updateCharacter();
 	}
 
 	showDialogWindow = () => {
@@ -32,7 +31,7 @@ class Character extends Component {
 		});
 	};
 
-	updateCharacter = () => {
+	/*updateCharacter = () => {
 		const { charId, gameService } = this.props;
 
 		return gameService.getCharacter(charId)
@@ -48,31 +47,12 @@ class Character extends Component {
 					dataLoaded: true,
 				});
 			});
-	};
+	};*/
 
 	render() {
-		const { dialog, style, showDialogWindow, dataLoaded } = this.state;
-
-		if (!dataLoaded) return null;
-
-		const dialogWindow = (showDialogWindow && dialog) ?
-			<DialogWindow dialog={dialog}/> : null;
-
-		const characterBlock = (
-			<div
-				className="character__image"
-				style={style}
-				onClick={this.showDialogWindow}>
-				Прототип персонажа
-				<CharacterAnimation/>
-			</div>);
-
-		return (
-			<div className="character">
-				{characterBlock}
-				{dialogWindow}
-			</div>
-		);
+		return false; /*(
+			<CharacterRender character={this.state} />
+		);*/
 	}
 }
 

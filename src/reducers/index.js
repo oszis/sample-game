@@ -8,7 +8,7 @@ import messages from './messages';
 import gameRoutes from './game-routes';
 import settings from './settings';
 import userData from './user-data';
-import loadGame from './game-load';
+import gameLoaded from './game-loading';
 import characters from './characters';
 
 const getReducers = () => {
@@ -22,7 +22,7 @@ const getReducers = () => {
 		settings,
 		userData,
 		characters,
-		loadGame
+		gameLoaded
 	});
 };
 

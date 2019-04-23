@@ -6,6 +6,7 @@ import {
 	SettingsPage,
 	SaveLoadPage,
 	GamePage,
+	LoadingPage
 } from '../game-components/pages';
 
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
 			<div className="App">
 				<Switch>
 					<Route path="/" component={MenuPage} exact/>
-					<Route path="/game/" component={GamePage} exact/>
+					<Route path="/loading" component={LoadingPage} exact/>
+					<Route path="/game/?id" component={GamePage}/>
 					<Route path="/settings/" component={SettingsPage} exact/>
 					<Route path="/save-game" component={SaveLoadPage} exact/>
 					<Route path="/load-game" component={SaveLoadPage} exact/>

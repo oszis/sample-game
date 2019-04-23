@@ -1,18 +1,9 @@
-const roomsLength = (newRooms) => {
-	return {
-		type: 'ROOMS_LENGTH',
-		payload: newRooms
-	}
-};
-
-const gameLoaded = (gameIsLoaded) => {
-	return {
-		type: 'GAME_LOADED',
-		payload: gameIsLoaded
-	}
-};
+import { loadCharacters } from './characters';
+import { loadRouteList } from './game-routes';
+import { loadRooms } from './room';
 
 export {
-	roomsLength,
-	gameLoaded
+	loadRouteList,
+	loadCharacters,
+	loadRooms,
 };

@@ -7,7 +7,7 @@ const MainMenuRender = ({continueGame}) => {
 		<div className="page">
 			<div className="page__button-list">
 				{continueGame}
-				<Link className="page__button" to="/game/">Новая Игра</Link>
+				<Link className="page__button" to="/loading">Новая Игра</Link>
 				<Link className="page__button" to="/settings">Настройки</Link>
 				<Link className="page__button" to="/exit">Выйти из игры</Link>
 			</div>

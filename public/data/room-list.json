@@ -1,3 +1,24 @@
 {
-    "roomsList": []
+    "roomsList": [
+        {
+            "name": "room-1",
+            "index": 1,
+            "style": {
+                "background": "#FF8670"
+            },
+            "characters": [
+                "char1"
+            ]
+        },
+        {
+            "name": "room-2",
+            "index": 2,
+            "style": {
+                "background": "#FF8670"
+            },
+            "characters": [
+                "char1"
+            ]
+        }
+    ]
 }
