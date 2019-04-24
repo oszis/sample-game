@@ -22,8 +22,6 @@ class DialogWindow extends Component {
 			currentDialog: dialog,
 			dataLoaded: true,
 		});
-
-		console.log(this.state.dialog);
 	};
 
 	playReplics(replicList) {
