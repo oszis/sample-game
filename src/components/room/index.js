@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './index.scss';
+import RoomLink from '../room-link';
 
 class Room extends Component {
 	state = {
@@ -15,7 +16,7 @@ class Room extends Component {
 	};
 
 	componentDidMount() {
-		const { name, style, characters } = this.props.state;
+		const { name, style, characters, links, things } = this.props.state;
 		const { isActive } = this.props;
 
 		this.setState({
@@ -23,6 +24,8 @@ class Room extends Component {
 			style,
 			characters,
 			isActive,
+			things,
+			links,
 			isLoaded: true,
 		});
 	}
@@ -30,14 +33,39 @@ class Room extends Component {
 	render() {
 		if (!this.state.isLoaded) return false;
 
-		const { name, style, characters } = this.state;
+		const { name, style, characters, links, things } = this.state;
+
+		/*room links*/
+		const linksList = links ? links.map((link) => {
+			return (
+				<RoomLink {...link} key={link.key}/>
+			);
+		}) : null;
+
+		/*room items & clickable elements*/
+		const thingsList = things ? things.map((thing, index) => {
+			return (
+				<div key={index}>thing</div>
+			);
+		}) : null;
+
+		const charactersList = characters ? characters.map((character, index) => {
+			return (
+				<div key={index}>{character}</div>
+			);
+		}) : null;
 
 		return (
 			<div className="room" style={style}>
 				{name}
+				{linksList}
+				{thingsList}
+				{charactersList}
 			</div>
 		);
 	}
 }
+
+
 
 export default Room;
