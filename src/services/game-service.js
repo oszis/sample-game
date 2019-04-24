@@ -10,7 +10,7 @@ export default class GameService {
 	};
 
 	getRoutes() {
-		return this.getData('/data/game-routes.json')
+		return this.getData('data/game-routes.json')
 			.then(({ data }) => {
 				return data;
 			})
@@ -18,11 +18,11 @@ export default class GameService {
 	}
 
 	getSettings() {
-		return this.getData('/data/settings.json');
+		return this.getData('data/settings.json');
 	}
 
 	getRooms() {
-		return this.getData('/data/room-list.json')
+		return this.getData('data/room-list.json')
 			.then(({ data }) => {
 				return data;
 			})
@@ -43,7 +43,7 @@ export default class GameService {
 	}
 
 	getCharacterList = () => {
-		return this.getData('/data/characters.json')
+		return this.getData('data/characters.json')
 			.then(({ data }) => {
 				return data;
 			})

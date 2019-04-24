@@ -2,8 +2,9 @@ import React from 'react';
 import CharacterAnimation from './character-animation';
 import DialogWindow from '../dialog-window';
 
-const CharacterRender = (character) => {
-	const { dialog, style, showDialogWindow,dataLoaded } = character;
+const CharacterRender = (props) => {
+	const { dialog, style, dataLoaded, showDialogWindow } = props.character;
+	const onShowDialogWindow = props.onShowDialogWindow;
 
 	if (!dataLoaded) return null;
 
@@ -14,7 +15,8 @@ const CharacterRender = (character) => {
 		<div
 			className="character__image"
 			style={style}
-			onClick={showDialogWindow}>
+			onClick={onShowDialogWindow}
+			>
 			Прототип персонажа
 			<CharacterAnimation/>
 		</div>);

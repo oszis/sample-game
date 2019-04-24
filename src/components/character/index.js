@@ -22,37 +22,33 @@ class Character extends Component {
 	};
 
 	componentDidMount() {
-		//this.updateCharacter();
+		this.updateCharacter();
 	}
 
-	showDialogWindow = () => {
+	onShowDialogWindow = () => {
+		console.log('show dialog window');
+
 		this.setState({
 			showDialogWindow: true,
 		});
 	};
 
-	/*updateCharacter = () => {
-		const { charId, gameService } = this.props;
-
-		return gameService.getCharacter(charId)
-			.then((data) => {
-				const { name, style, currentRoom, dialog, routes } = data;
-
-				this.setState({
-					name,
-					style,
-					currentRoom,
-					routes,
-					dialog,
-					dataLoaded: true,
-				});
-			});
-	};*/
+	updateCharacter = () => {
+		const { charId, gameService, name, style, currentRoom, dialog, routes } = this.props;
+		this.setState({
+			name,
+			style,
+			currentRoom,
+			routes,
+			dialog,
+			dataLoaded: true,
+		});
+	};
 
 	render() {
-		return false; /*(
-			<CharacterRender character={this.state} />
-		);*/
+		return (
+			<CharacterRender character={this.state} onShowDialogWindow={this.onShowDialogWindow}/>
+		);
 	}
 }
 

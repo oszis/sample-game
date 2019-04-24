@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './index.scss';
 import RoomLink from '../room-link';
+import Character from '../character';
 
 class Room extends Component {
 	state = {
@@ -49,9 +50,11 @@ class Room extends Component {
 			);
 		}) : null;
 
-		const charactersList = characters ? characters.map((character, index) => {
+		const charactersList = characters ? characters.map((character) => {
+			console.log(character);
+
 			return (
-				<div key={index}>{character}</div>
+				<Character {...character} key={character.id}/>
 			);
 		}) : null;
 
