@@ -1,20 +1,12 @@
 import React from 'react';
 
-const DialogWindowRender = ({ replicList, goToNextReplic }) => {
+const DialogReplicRender = ({ replic, goToNextReplic }) => {
 	return (
-		<div className="dialog-window__replics">
-			{
-				replicList.map(({author, text, key}) => {
-					return (
-						<div className="dialog-window__container" onClick={goToNextReplic} key={key}>
-							<div className="dialog-window__overlay"/>
-							<div className="dialog-window__author">{author}</div>
-							<div className="dialog-window__text">{text}</div>
-						</div>);
-				})
-			}
-		</div>
-	);
+		<div className="dialog-window__container" onClick={goToNextReplic} key={replic.key}>
+			<div className="dialog-window__overlay"/>
+			<div className="dialog-window__author">{replic.author}</div>
+			<div className="dialog-window__text">{replic.text}</div>
+		</div>);
 };
 
 const DialogAnswerListRender = ({ answerList, onAnswerClick }) => {
@@ -25,7 +17,7 @@ const DialogAnswerListRender = ({ answerList, onAnswerClick }) => {
 					return (
 						<button
 							className="dialog-window__answer"
-							onClick={() => onAnswerClick(answer.goto)}
+							onClick={() => onAnswerClick(answer.index)}
 							key={answer.key}>
 							{answer.text}
 						</button>
@@ -37,6 +29,6 @@ const DialogAnswerListRender = ({ answerList, onAnswerClick }) => {
 };
 
 export {
-	DialogWindowRender,
+	DialogReplicRender,
 	DialogAnswerListRender,
 };

@@ -26,28 +26,34 @@ class Character extends Component {
 	}
 
 	onShowDialogWindow = () => {
-		console.log('show dialog window');
-
 		this.setState({
 			showDialogWindow: true,
 		});
 	};
 
+	onHideDialogWindow = () => {
+		this.setState({
+			showDialogWindow: false,
+		});
+	};
+
 	updateCharacter = () => {
-		const { charId, gameService, name, style, currentRoom, dialog, routes } = this.props;
+		const { name, style, currentRoom, dialog, routes } = this.props;
+
 		this.setState({
 			name,
 			style,
 			currentRoom,
 			routes,
 			dialog,
+			hideDialog: false,
 			dataLoaded: true,
 		});
 	};
 
 	render() {
 		return (
-			<CharacterRender character={this.state} onShowDialogWindow={this.onShowDialogWindow}/>
+			<CharacterRender character={this.state} onHideDialogWindow={this.onHideDialogWindow} onShowDialogWindow={this.onShowDialogWindow}/>
 		);
 	}
 }

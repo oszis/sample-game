@@ -1,15 +1,17 @@
+@import "../../styles/helpers/colors";
+
 .dialog-window {
 	position: fixed;
 	z-index: 100;
 
 	&__container {
 		position: fixed;
-		left: 30px;
-		right: 30px;
-		bottom: 30px;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 20vh;
 		z-index: 100;
-		border: 2px solid black;
-		background-color: white;
+		background-color: rgba($color-black, 0.5);
 	}
 
 	&__overlay {
