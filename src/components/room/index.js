@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import './index.scss';
 import RoomLink from '../room-link';
@@ -10,6 +11,7 @@ class Room extends Component {
 		style: null,
 		interactions: null,
 		things: null,
+		index: null,
 		characters: null,
 		links: null,
 		isActive: false,
@@ -17,8 +19,7 @@ class Room extends Component {
 	};
 
 	componentDidMount() {
-		const { name, style, characters, links, things } = this.props.state;
-		const { isActive } = this.props;
+		const { name, style, links, things, index, characters, isActive } = this.props;
 
 		this.setState({
 			name,
@@ -27,6 +28,7 @@ class Room extends Component {
 			isActive,
 			things,
 			links,
+			index,
 			isLoaded: true,
 		});
 	}
@@ -51,24 +53,36 @@ class Room extends Component {
 		}) : null;
 
 		const charactersList = characters ? characters.map((character) => {
-			console.log(character);
+			const { index } = this.state;
 
-			return (
-				<Character {...character} key={character.id}/>
-			);
+			if (character.currentRoom === index) {
+				return (
+					<Character {...character} key={character.id}/>
+				);
+			} else return false;
 		}) : null;
 
 		return (
-			<div className="room" style={style}>
-				{name}
-				{linksList}
-				{thingsList}
-				{charactersList}
+			<div className="room">
+				<div className="room__content" style={style}>
+					{name}
+					{linksList}
+					{thingsList}
+					{charactersList}
+				</div>
 			</div>
 		);
 	}
 }
 
+const mapStateToProps = state => {
+	return {
+		characters: state.characters
+	}
+};
 
+export {
+	Room
+};
 
-export default Room;
+export default connect(mapStateToProps, null)(Room);

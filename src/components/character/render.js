@@ -4,12 +4,12 @@ import DialogWindow from '../dialog-window';
 
 const CharacterRender = (props) => {
 	const { dialog, style, dataLoaded, showDialogWindow } = props.character;
-	const onShowDialogWindow = props.onShowDialogWindow;
+	const {onShowDialogWindow, onHideDialogWindow} = props;
 
 	if (!dataLoaded) return null;
 
-	const dialogWindow = (showDialogWindow && dialog) ?
-		<DialogWindow dialog={dialog}/> : null;
+	const dialogWindow = (showDialogWindow && onHideDialogWindow && dialog) ?
+		<DialogWindow {...dialog} onHideDialogWindow={onHideDialogWindow}/> : null;
 
 	const characterBlock = (
 		<div

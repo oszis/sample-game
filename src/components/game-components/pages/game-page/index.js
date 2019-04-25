@@ -13,20 +13,19 @@ class GamePage extends Component {
 		loadGame: false,
 		gameLoaded: false,
 		inventoryIsOpen: false,
-		roomsList: null,
-		characters: {},
+		roomsList: null
 	};
 
 	componentDidMount() {
 		this._isMounted = true;
 
-		const { currentRoom, gameLoaded, loadGame, inventory, characters, roomsList } = this.props;
+		const { currentRoom, gameLoaded, loadGame, inventory, roomsList } = this.props;
 
 		this.setState({
 			loadGame,
 			roomsList,
 			currentRoom,
-			characters,
+			gameLoaded,
 			inventoryIsOpen: inventory.isOpen,
 		});
 	}
@@ -45,7 +44,7 @@ class GamePage extends Component {
 
 	render() {
 		const { gameLoaded } = this.props;
-		const { currentRoom, roomsList, characters } = this.state;
+		const { currentRoom, roomsList} = this.state;
 
 		if (!gameLoaded) {
 			return (<Redirect to="/"/>);
@@ -56,10 +55,8 @@ class GamePage extends Component {
 				<Route
 					path={`/game/${item.index.toString()}`}
 					exact
-					render={(props) =>
-						(<Room
-							{...props}
-							state={item}/>)
+					render={() =>
+						(<Room {...item}/>)
 					}
 					key={index}/>
 			);
@@ -88,7 +85,7 @@ const mapStateToProps = (state) => {
 		currentRoom: state.currentRoom,
 		gameLoaded: state.gameLoaded,
 		roomsList: state.roomsList,
-		inventory: state.inventory,
+		inventory: state.inventory
 	};
 };
 
@@ -108,5 +105,7 @@ const mapDispatchToProps = (dispatch) => {
 		},
 	};
 };
+
+export {GamePage};
 
 export default connect(mapStateToProps, mapDispatchToProps)(GamePage);
