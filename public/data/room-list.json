@@ -9,8 +9,11 @@
             "links": [
                 "home-city"
             ],
-            "dialogEvents": [
-                "main-room-test-1"
+            "currentEvent": 0,
+            "roomDialogEvents": [
+                "main-room-test-1",
+                "main-room-test-1",
+                "main-room-test-2"
             ]
         },
         {
@@ -21,7 +24,8 @@
             },
             "links": [
                 "city-home"
-            ]
+            ],
+            "roomDialogEvents": []
         }
     ]
 }

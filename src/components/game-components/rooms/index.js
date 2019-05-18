@@ -2,6 +2,10 @@ import React from 'react';
 
 import withRoom from '../../hoc/with-room';
 
+/*
+* attention: ЭТИ КОМПОНЕНТЫ ВООБЩЕ НИГДЕ НЕ ИСПОЛЬЗУЮТСЯ. ПОКА НЕ УДАЛЯЕМ, ЭТО ПРИМЕР
+* */
+
 const Room = withRoom(() => {
 	return (
 		<div className="home room">

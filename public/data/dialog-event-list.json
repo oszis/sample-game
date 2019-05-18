@@ -1,90 +1,104 @@
 {
     "main-room-test-1": {
-        "dialogList": [
-            {
-                "author": "char-1",
-                "replic": "Первая реплика",
-                "hasAnswer": false
-            },
-            {
-                "hasAnswer": true,
-                "answerList": [
-                    {
-                        "text": "Ответ, ведущий к 2 реплике",
-                        "goto": 2,
-                        "key": 1
+        "dialog": {
+            "replics": [
+                {
+                    "author": "character 1",
+                    "text": "hello, player",
+                    "key": 1
+                },
+                {
+                    "author": "player",
+                    "text": "hello, character",
+                    "key": 2
+                }
+            ],
+            "answers": [
+                {
+                    "text": "How is it going?",
+                    "index": 0,
+                    "key": 0,
+                    "exit": false,
+                    "route": {
+                        "name": "main",
+                        "step": 1
                     },
-                    {
-                        "text": "Ответ, ведущий к 3 реплике",
-                        "goto": 3,
-                        "key": 2
-                    },
-                    {
-                        "text": "Ответ, ведущий к 4 реплике",
-                        "goto": 4,
-                        "key": 3
+                    "dialog": {
+                        "replics": [
+                            {
+                                "author": "player",
+                                "text": "how is it going?"
+                            },
+                            {
+                                "author": "character 1",
+                                "text": "it ok"
+                            }
+                        ],
+                        "answers": []
                     }
-                ]
-            },
-            {
-                "author": "char-1",
-                "replic": "Вторая реплика",
-                "hasAnswer": false
-            },
-            {
-                "author": "char-1",
-                "replic": "Третья реплика",
-                "hasAnswer": false
-            },
-            {
-                "author": "char-1",
-                "replic": "Четвертая реплика",
-                "hasAnswer": false
-            }
-        ]
+                },
+                {
+                    "text": "Exit dialog",
+                    "index": 1,
+                    "key": 1,
+                    "exit": true,
+                    "route": {
+                        "name": "main",
+                        "step": 1
+                    }
+                }
+            ]
+        }
     },
     "main-room-test-2": {
-        "dialogList": [
-            {
-                "author": "char-1",
-                "replic": "Первая реплика",
-                "hasAnswer": false
-            },
-            {
-                "hasAnswer": true,
-                "answerList": [
-                    {
-                        "text": "Ответ, ведущий к 2 реплике",
-                        "goto": 2,
-                        "key": 1
+        "dialog": {
+            "replics": [
+                {
+                    "author": "character 1",
+                    "text": "hello, player",
+                    "key": 1
+                },
+                {
+                    "author": "player",
+                    "text": "hello, character",
+                    "key": 2
+                }
+            ],
+            "answers": [
+                {
+                    "text": "How is it going?",
+                    "index": 0,
+                    "key": 0,
+                    "exit": false,
+                    "route": {
+                        "name": "main",
+                        "step": 1
                     },
-                    {
-                        "text": "Ответ, ведущий к 3 реплике",
-                        "goto": 3,
-                        "key": 2
-                    },
-                    {
-                        "text": "Ответ, ведущий к 4 реплике",
-                        "goto": 4,
-                        "key": 3
+                    "dialog": {
+                        "replics": [
+                            {
+                                "author": "player",
+                                "text": "how is it going?"
+                            },
+                            {
+                                "author": "character 1",
+                                "text": "it ok"
+                            }
+                        ],
+                        "answers": []
                     }
-                ]
-            },
-            {
-                "author": "char-1",
-                "replic": "Вторая реплика",
-                "hasAnswer": false
-            },
-            {
-                "author": "char-1",
-                "replic": "Третья реплика",
-                "hasAnswer": false
-            },
-            {
-                "author": "char-1",
-                "replic": "Четвертая реплика",
-                "hasAnswer": false
-            }
-        ]
+                },
+                {
+                    "text": "Exit dialog",
+                    "index": 1,
+                    "key": 1,
+                    "exit": true,
+                    "route": {
+                        "name": "main",
+                        "step": 1
+                    }
+                }
+            ]
+        }
     }
 }

@@ -82,7 +82,7 @@ class DialogWindow extends Component {
 
 	render() {
 
-		const {dataLoaded, replics, currentReplic, answers, showAnswers } = this.state;
+		const { dataLoaded, replics, currentReplic, answers, showAnswers } = this.state;
 
 		if (!dataLoaded || !replics) return false;
 

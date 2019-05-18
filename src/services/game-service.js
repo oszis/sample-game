@@ -60,7 +60,7 @@ export default class GameService {
 
 	getDialogEventList() {
 		return this.getData('data/dialog-event-list.json')
-			.then(({data}) => {
+			.then(({ data }) => {
 				return data;
 			})
 			.catch((error) => this.catchError(error));
@@ -76,7 +76,7 @@ export default class GameService {
 
 	getLinkList() {
 		return this.getData('data/links-list.json')
-			.then(({data}) => {
+			.then(({ data }) => {
 				return data;
 			})
 			.catch((error) => this.catchError(error));

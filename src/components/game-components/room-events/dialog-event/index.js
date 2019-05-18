@@ -5,24 +5,33 @@ import withGameService from '../../../hoc/with-game-service';
 
 class DialogEvent extends Component {
 	state = {
-		dialogList: [],
-		currentDialog: 0,
+		dialog: null,
+		showDialog: false,
+		onCloseDialogEvent: null,
 	};
 
 	componentDidMount() {
-		const { dialogList } = this.props;
+		const { dialog, onCloseDialogEvent } = this.props;
 
 		this.setState({
-			dialogList,
+			dialog,
+			onCloseDialogEvent,
 		});
 	}
 
+	onHideDialogWindow = () => {
+		this.props.onCloseDialogEvent();
+	};
+
 	render() {
-		const { dialogList } = this.state;
+		const { dialog, onCloseDialogEvent } = this.state;
+
+		const dialogWindow = (dialog && onCloseDialogEvent) ?
+			<DialogWindow {...dialog} onHideDialogWindow={onCloseDialogEvent}/> : null;
 
 		return (
 			<div className="dialog-event">
-				<DialogWindow {...dialogList}/>
+				{dialogWindow}
 			</div>
 		);
 	}

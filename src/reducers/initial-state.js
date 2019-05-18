@@ -21,6 +21,7 @@ let initialState = {
 	},
 	gameLoaded: false,
 	roomLinks: {},
+	dialogEvents: [],
 	userData: {
 		time: 9,
 		nightTime: 8,
