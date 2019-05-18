@@ -20,9 +20,11 @@ let initialState = {
 		"volume": 100
 	},
 	gameLoaded: false,
+	roomLinks: {},
 	userData: {
-		Time: '00:00',
-		Date: '1 января 2019',
+		time: 9,
+		nightTime: 8,
+		date: '1 января 2019',
 	},
 };
 

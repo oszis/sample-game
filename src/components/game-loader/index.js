@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import './index.scss';
 import { withGameService } from '../hoc';
-import { loadCharacters, loadRouteList, loadRooms } from '../../actions';
+import { loadCharacters, loadRouteList, loadRooms, loadLinksList } from '../../actions';
 
 /*
 * В этом компоненте будут загружаться все данные, нужные для начала новой игры.
@@ -18,6 +18,7 @@ class GameLoader extends Component {
 		loadPercent: 0,
 		loadingText: null,
 		hasError: false,
+		linksList: {},
 		characterList: [],
 	};
 
@@ -29,7 +30,7 @@ class GameLoader extends Component {
 
 		this._isMounted = true;
 
-		const { gameService, gameLoaded } = this.props;
+		const { gameService } = this.props;
 
 		/*get characters*/
 		gameService.getCharacterList()
@@ -56,7 +57,7 @@ class GameLoader extends Component {
 			});
 
 		/*get routes*/
-		gameService.getRoutes()
+		gameService.getRouteList()
 			.then((routesList) => {
 				if (this._isMounted) {
 					const list = this.errorCatcher(routesList);
@@ -75,8 +76,24 @@ class GameLoader extends Component {
 				this.onLoadingDone();
 			});
 
+		/*get all links*/
+		gameService.getLinkList()
+			.then((linksList) => {
+				if (this._isMounted) {
+					const list = this.errorCatcher(linksList);
+
+					if (!list) return false;
+
+					this.setState({
+						linksList: list,
+					});
+
+					this.props.loadLinks(list);
+				}
+			});
+
 		/*get rooms*/
-		gameService.getRooms()
+		gameService.getRoomList()
 			.then(({ roomsList }) => {
 				if (this._isMounted) {
 					const list = this.errorCatcher(roomsList);
@@ -90,7 +107,7 @@ class GameLoader extends Component {
 			.then(() => {
 				this.onChangePersent(30);
 				this.onLoadingDone();
-			})
+			});
 	}
 
 	componentWillUnmount() {
@@ -99,8 +116,6 @@ class GameLoader extends Component {
 
 
 	errorCatcher = (data) => {
-		/*console.log(data);*/
-
 		if (typeof data === 'number') {
 			this.setState({
 				hasError: true,
@@ -201,6 +216,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		loadRooms: (roomsList) => {
 			dispatch(loadRooms(roomsList));
+		},
+		loadLinks: (linksList) => {
+			dispatch(loadLinksList(linksList));
 		},
 	};
 };

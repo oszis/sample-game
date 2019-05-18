@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const RoomLink = (link) => {
 
-	const { style = {}, linkTo, text } = link;
+	const { style = {}, href, text } = link;
 
 	return (
-		<Link style={style} to={linkTo}>{text}</Link>
+		<Link style={style} to={href}>{text}</Link>
 	);
 };
 
