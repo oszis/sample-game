@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 
 import './index.scss';
 import { withGameService } from '../hoc';
-import { loadCharacters, loadRouteList, loadRooms, loadLinksList } from '../../actions';
+import { loadCharacters, loadRouteList, loadRooms, loadLinksList, loadDialogEventList } from '../../actions';
 
 /*
 * В этом компоненте будут загружаться все данные, нужные для начала новой игры.
 * После загрузки все данные будут помещаться в store.
+* Он пиздецки большой, надо будет задуматься над тем, как бы его уменьшить. Мб, разбить на суб-компоненты
 * */
 
 class GameLoader extends Component {
@@ -20,6 +21,7 @@ class GameLoader extends Component {
 		hasError: false,
 		linksList: {},
 		characterList: [],
+		dialogEvents: null,
 	};
 
 	componentDidMount() {
@@ -52,7 +54,7 @@ class GameLoader extends Component {
 				}
 			})
 			.then(() => {
-				this.onChangePersent(35);
+				this.onChangePersent(10);
 				this.onLoadingDone();
 			});
 
@@ -72,7 +74,7 @@ class GameLoader extends Component {
 				}
 			})
 			.then(() => {
-				this.onChangePersent(35);
+				this.onChangePersent(10);
 				this.onLoadingDone();
 			});
 
@@ -90,6 +92,29 @@ class GameLoader extends Component {
 
 					this.props.loadLinks(list);
 				}
+			})
+			.then(() => {
+				this.onChangePersent(10);
+				this.onLoadingDone();
+			});
+
+		gameService.getDialogEventList()
+			.then((dialogEventList) => {
+				if (this._isMounted) {
+					const list = this.errorCatcher(dialogEventList);
+
+					if (!list) return false;
+
+					this.setState({
+						dialogEvents: dialogEventList,
+					});
+
+					this.props.loadDialogEvents(list);
+				}
+			})
+			.then(() => {
+				this.onChangePersent(10);
+				this.onLoadingDone();
 			});
 
 		/*get rooms*/
@@ -105,7 +130,7 @@ class GameLoader extends Component {
 				}
 			})
 			.then(() => {
-				this.onChangePersent(30);
+				this.onChangePersent(60);
 				this.onLoadingDone();
 			});
 	}
@@ -220,6 +245,9 @@ const mapDispatchToProps = (dispatch) => {
 		loadLinks: (linksList) => {
 			dispatch(loadLinksList(linksList));
 		},
+		loadDialogEvents: (dialogEventsList) => {
+			dispatch(loadDialogEventList(dialogEventsList))
+		}
 	};
 };
 

@@ -18,8 +18,16 @@ const loadRooms = (roomsList) => {
 	};
 };
 
+const removeRoomDialogEvents = (roomsList) => {
+	return {
+		type: 'ROOM_REMOVE_DIALOG_EVENTS',
+		payload: roomsList
+	}
+};
+
 export {
 	loadRooms,
 	getRoomsList,
 	roomsLength,
+	removeRoomDialogEvents,
 };

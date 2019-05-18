@@ -4,6 +4,8 @@ const roomsList = (state = [], action) => {
 			return action.payload;
 		case 'ROOM_GET_LIST':
 			return state;
+		case 'ROOM_REMOVE_DIALOG_EVENTS':
+			return action.payload;
 		default:
 			return state;
 	}

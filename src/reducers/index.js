@@ -9,8 +9,9 @@ import gameRoutes from './game-routes';
 import settings from './settings';
 import userData from './user-data';
 import gameLoaded from './game-loading';
-import characters from './characters';
 import roomLinks from './room-links';
+import dialogEvents from './dialog-events';
+import characters from './characters';
 
 const getReducers = () => {
 	return combineReducers({
@@ -24,6 +25,7 @@ const getReducers = () => {
 		userData,
 		characters,
 		roomLinks,
+		dialogEvents,
 		gameLoaded
 	});
 };
