@@ -20,5 +20,6 @@ const loadRooms = (roomsList) => {
 
 export {
 	loadRooms,
+	getRoomsList,
 	roomsLength,
 };

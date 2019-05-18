@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+/*
+* todo: фикс ссылок комнаты. Теперь ссылки находятся в отдельном json-файле.
+*  Поиск ссылок осуществляется перебором массива "links".
+*  */
+
 const withRoom = (Room, getRoomData) => {
 	return class extends Component {
 		state = {
@@ -7,6 +12,7 @@ const withRoom = (Room, getRoomData) => {
 			interactions: [],
 			things: [],
 			links: [],
+			dialogEvents: []
 		};
 
 		componentDidMount() {
@@ -18,15 +24,27 @@ const withRoom = (Room, getRoomData) => {
 							interactions: data.interactions,
 							things: data.things,
 							links: data.links,
+							dialogEvents: data.dialogEvents
 						});
 					});
+
+				this.createRoomLinks(this.state.links);
 			}
 		}
+
+		createRoomLinks = (links) => {
+			links.each((index, item) => {
+
+			});
+		};
 
 		render() {
 			return (<Room {...this.props} {...this.state}/>);
 		}
 	};
 };
+
+
+
 
 export default withRoom;

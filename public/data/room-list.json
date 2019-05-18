@@ -1,33 +1,26 @@
 {
     "roomsList": [
         {
-            "name": "room-1",
+            "name": "home",
             "index": 1,
             "style": {
                 "background": "#FF8670"
             },
             "links": [
-                {
-                    "style": {},
-                    "linkTo": "2",
-                    "text": "this is a link to room 2",
-                    "key": 1
-                }
+                "home-city"
+            ],
+            "dialogEvents": [
+                "main-room-test-1"
             ]
         },
         {
-            "name": "room-2",
+            "name": "city",
             "index": 2,
             "style": {
                 "background": "#FF8670"
             },
             "links": [
-                {
-                    "style": {},
-                    "linkTo": "1",
-                    "text": "this is a link to room 1",
-                    "key": 1
-                }
+                "city-home"
             ]
         }
     ]

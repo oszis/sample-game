@@ -16,10 +16,12 @@ class Room extends Component {
 		links: null,
 		isActive: false,
 		isLoaded: false,
+		roomLinks: {},
+		userData: [],
 	};
 
 	componentDidMount() {
-		const { name, style, links, things, index, characters, isActive } = this.props;
+		const { name, style, links, things, index, characters, isActive, userData, roomLinks } = this.props;
 
 		this.setState({
 			name,
@@ -29,6 +31,8 @@ class Room extends Component {
 			things,
 			links,
 			index,
+			userData,
+			roomLinks,
 			isLoaded: true,
 		});
 	}
@@ -36,12 +40,14 @@ class Room extends Component {
 	render() {
 		if (!this.state.isLoaded) return false;
 
-		const { name, style, characters, links, things } = this.state;
+		const { name, style, characters, links, things, userData } = this.state;
 
 		/*room links*/
 		const linksList = links ? links.map((link) => {
+			const currentLink = this.state.roomLinks[link];
+
 			return (
-				<RoomLink {...link} key={link.key}/>
+				<RoomLink {...currentLink} key={currentLink.key}/>
 			);
 		}) : null;
 
@@ -63,7 +69,7 @@ class Room extends Component {
 		}) : null;
 
 		return (
-			<div className="room">
+			<div className={`room ${(userData.time > userData.nightTime) ? "room--night": ""}`}>
 				<div className="room__content" style={style}>
 					{name}
 					{linksList}
@@ -77,12 +83,14 @@ class Room extends Component {
 
 const mapStateToProps = state => {
 	return {
-		characters: state.characters
-	}
+		characters: state.characters,
+		userData: state.userData,
+		roomLinks: state.roomLinks
+	};
 };
 
 export {
-	Room
+	Room,
 };
 
 export default connect(mapStateToProps, null)(Room);
