@@ -4,28 +4,30 @@
             "name": "home",
             "index": 1,
             "style": {
-                "background": "#FF8670"
+                "background": "url('images/rooms/backgrounds/room-1-background.jpg') no-repeat center center",
+                "backgroundSize": "cover"
             },
             "links": [
                 "home-city"
             ],
             "currentEvent": 0,
             "roomDialogEvents": [
-                "main-room-test-1",
-                "main-room-test-1",
-                "main-room-test-2"
+                "main-room-test-1"
             ]
         },
         {
             "name": "city",
             "index": 2,
             "style": {
-                "background": "#FF8670"
+                "background": "url('images/rooms/backgrounds/room-2-background.jpg') no-repeat center center",
+                "backgroundSize": "cover"
             },
             "links": [
                 "city-home"
             ],
-            "roomDialogEvents": []
+            "roomDialogEvents": [
+                "main-room-test-2"
+            ]
         }
     ]
 }
