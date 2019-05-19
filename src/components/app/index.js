@@ -9,10 +9,12 @@ import {
 	LoadingPage
 } from '../game-components/pages';
 
+import './index.scss';
+
 class App extends Component {
 	render() {
 		return (
-			<div className="App">
+			<div className="app">
 				<Switch>
 					<Route path="/" component={MenuPage} exact/>
 					<Route path="/loading" component={LoadingPage} exact/>
@@ -27,6 +29,7 @@ class App extends Component {
 						);
 					}}/>
 				</Switch>
+				<div className="app__game-version">Версия: 0.0.0.12</div>
 			</div>
 		);
 	}

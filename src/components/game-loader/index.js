@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { CSSTransition } from 'react-transition-group';
+
 import './index.scss';
 import { withGameService } from '../hoc';
 import { loadCharacters, loadRouteList, loadRooms, loadLinksList, loadDialogEventList } from '../../actions';
@@ -218,9 +220,16 @@ class GameLoader extends Component {
 		);
 
 		return (
-			<div className="game-loader">
-				{loaderContent}
-			</div>
+			<CSSTransition
+				in={true}
+				appear={true}
+				timeout={500}
+				classNames="fade-zoom"
+			>
+				<div className="game-loader">
+					{loaderContent}
+				</div>
+			</CSSTransition>
 		);
 	};
 }

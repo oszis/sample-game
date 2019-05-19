@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import './index.scss';
 import { DialogReplicRender, DialogAnswerListRender } from './render';
+import { CSSTransition } from 'react-transition-group';
+
+/*
+* todo: переписать компонент под react-transitions
+* */
 
 class DialogWindow extends Component {
 	state = {
@@ -96,10 +101,17 @@ class DialogWindow extends Component {
 			: null;
 
 		return (
-			<div className="dialog-window">
-				{replicItem}
-				{answersList}
-			</div>
+			<CSSTransition
+				in={true}
+				appear={true}
+				timeout={500}
+				classNames="fade"
+			>
+				<div className="dialog-window">
+					{replicItem}
+					{answersList}
+				</div>
+			</CSSTransition>
 		);
 	}
 }

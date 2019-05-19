@@ -1,0 +1,75 @@
+.fade-zoom {
+	opacity: 0;
+
+	&-enter,
+	&-appear {
+		opacity: 0;
+		transform-origin: bottom center;
+		transform: scale(1.2);
+		transition: opacity 0.5s, transform 0.5s;
+	}
+
+	&-enter-active,
+	&-appear-active {
+		opacity: 1;
+		transform: scale(1);
+		transform-origin: bottom center;
+		transition: opacity 0.5s, transform 0.5s;
+	}
+
+	&-enter-done,
+	&-appear-done {
+		opacity: 1;
+		transform: scale(1);
+		transform-origin: bottom center;
+		transition: opacity 0.5s, transform 0.5s;
+	}
+
+	&-exit {
+		opacity: 1;
+		transition: opacity 1s;
+
+		&-active {
+			opacity: 0;
+			transition: opacity 1s;
+		}
+	}
+}
+
+.fade {
+	opacity: 0;
+
+	&-enter,
+	&-appear {
+		opacity: 0;
+		transition: opacity 0.5s;
+	}
+
+	&-enter-active,
+	&-appear-active {
+		opacity: 1;
+		transition: opacity 0.5s;
+	}
+
+	&-enter-done,
+	&-appear-done {
+		opacity: 1;
+		transition: opacity 0.5s;
+	}
+
+	&-exit {
+		opacity: 1;
+		transition: opacity 1s;
+
+		&-active {
+			opacity: 0;
+			transition: opacity 1s;
+		}
+
+		&-done {
+			opacity: 0;
+			transition: opacity 1s;
+		}
+	}
+}
+

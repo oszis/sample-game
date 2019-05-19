@@ -4,13 +4,13 @@ import { Redirect } from 'react-router-dom';
 import GameLoader from '../../../game-loader';
 import './index.scss';
 import { connect } from 'react-redux';
-import {gameLoaded} from '../../../../actions/loading';
+import { gameLoaded } from '../../../../actions/loading';
 
 class LoadingPage extends Component {
 
 	state = {
 		gameLoaded: false,
-		gameLoading: false
+		gameLoading: false,
 	};
 
 	onLoadingDone = () => {
@@ -18,7 +18,7 @@ class LoadingPage extends Component {
 
 		this.setState({
 			gameLoaded: true,
-			gameLoading: true
+			gameLoading: true,
 		});
 	};
 
@@ -38,8 +38,8 @@ class LoadingPage extends Component {
 
 const mapStateToProps = state => {
 	return {
-		gameLoaded: state.gameLoaded
-	}
+		gameLoaded: state.gameLoaded,
+	};
 };
 
 const mapDispatchToProps = dispatch => {
