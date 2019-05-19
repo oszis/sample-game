@@ -4,9 +4,13 @@
         "id": "char1",
         "style": {
             "opacity": 1,
+            "background": "url('images/characters/character-1/main.png') no-repeat center center",
+            "backgroundSize": "contain",
+            "width": "188px",
+            "height": "320px",
             "marginLeft": "-300px",
-            "marginTop": "-300px",
-            "transform": "scale(0.5)"
+            "marginTop": "100px",
+            "transform": "scale(1.5)"
         },
         "currentRoom": 1,
         "routes": [
@@ -70,6 +74,10 @@
         "id": "char2",
         "style": {
             "opacity": 1,
+            "background": "url('images/characters/character-1/main.png') no-repeat center center",
+            "backgroundSize": "contain",
+            "width": "188px",
+            "height": "320px",
             "marginLeft": "300px",
             "marginTop": "-300px"
         },
