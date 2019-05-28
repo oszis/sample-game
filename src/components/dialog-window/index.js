@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './index.scss';
 import { DialogReplicRender, DialogAnswerListRender } from './render';
-import { CSSTransition } from 'react-transition-group';
 
 /*
-* todo: переписать компонент под react-transitions
+* todo: переписать компонент под react-spring
 * */
 
 class DialogWindow extends Component {
@@ -91,8 +90,14 @@ class DialogWindow extends Component {
 
 		if (!dataLoaded || !replics) return false;
 
-		const replicItem = (currentReplic === -1) ? null :
-			<DialogReplicRender replic={replics[currentReplic]} goToNextReplic={this.onGoToNextReplic}/>;
+		const replicArr = <DialogReplicRender
+				replicArr={replics}
+				activeIndex={currentReplic}
+				goToNextReplic={this.onGoToNextReplic}/>;
+		/*const replicItem = (currentReplic === -1) ? null :
+			<DialogReplicRender
+				replic={replics[currentReplic]}
+				goToNextReplic={this.onGoToNextReplic}/>;*/
 
 		const answersList = (showAnswers && answers.length) ?
 			(<DialogAnswerListRender
@@ -101,17 +106,10 @@ class DialogWindow extends Component {
 			: null;
 
 		return (
-			<CSSTransition
-				in={true}
-				appear={true}
-				timeout={500}
-				classNames="fade"
-			>
-				<div className="dialog-window">
-					{replicItem}
-					{answersList}
-				</div>
-			</CSSTransition>
+			<div className="dialog-window">
+				{replicArr}
+				{answersList}
+			</div>
 		);
 	}
 }

@@ -4,20 +4,28 @@
             "replics": [
                 {
                     "author": "character 1",
-                    "text": "hello, player",
+                    "text": "Это тестовый диалог",
+                    "image": "/images/characters/character-1/main.png",
+                    "imageStyle": {
+
+                    },
                     "key": 1
                 },
                 {
                     "author": "player",
-                    "text": "hello, character",
+                    "text": "При входе в комнату",
+                    "image": "",
+                    "imageStyle": {
+
+                    },
                     "key": 2
                 }
             ],
             "answers": [
                 {
-                    "text": "How is it going?",
+                    "text": "Продолжить тестирование",
                     "index": 0,
-                    "key": 0,
+                    "key": 3,
                     "exit": false,
                     "route": {
                         "name": "main",
@@ -27,20 +35,30 @@
                         "replics": [
                             {
                                 "author": "player",
-                                "text": "how is it going?"
+                                "text": "Тут мы тестируем поведение \"персонажей\" при входе в комнату",
+                                "image": "/images/characters/character-1/main.png",
+                                "imageStyle": {
+
+                                },
+                                "key": 1
                             },
                             {
                                 "author": "character 1",
-                                "text": "it ok"
+                                "text": "А это последняя реплика",
+                                "image": "/images/characters/character-1/main.png",
+                                "imageStyle": {
+
+                                },
+                                "key": 2
                             }
                         ],
                         "answers": []
                     }
                 },
                 {
-                    "text": "Exit dialog",
+                    "text": "Выход из диалога",
                     "index": 1,
-                    "key": 1,
+                    "key": 4,
                     "exit": true,
                     "route": {
                         "name": "main",

@@ -14,7 +14,7 @@ import './index.scss';
 class App extends Component {
 	render() {
 		return (
-			<div className="app">
+			<div className="app app-animated">
 				<Switch>
 					<Route path="/" component={MenuPage} exact/>
 					<Route path="/loading" component={LoadingPage} exact/>
@@ -29,7 +29,7 @@ class App extends Component {
 						);
 					}}/>
 				</Switch>
-				<div className="app__game-version">Версия: 0.0.0.12</div>
+				<div className="app__game-version">Версия: 0.0.0.12-1</div>
 			</div>
 		);
 	}

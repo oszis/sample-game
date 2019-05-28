@@ -1,6 +1,6 @@
 {
   "name": "game",
-  "version": "0.0.0.12",
+  "version": "0.0.12-1",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
@@ -12,6 +12,7 @@
     "react-redux": "^7.0.2",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "react-spring": "^8.0.20",
     "react-transition-group": "^4.0.1",
     "redux": "^4.0.1"
   },

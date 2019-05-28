@@ -24,11 +24,19 @@
                 {
                     "author": "character 1",
                     "text": "hello, player",
+                    "image": "/images/characters/character-1/main.png",
+                    "imageStyle": {
+
+                    },
                     "key": 1
                 },
                 {
                     "author": "player",
                     "text": "hello, character",
+                    "image": "/images/characters/character-1/main.png",
+                    "imageStyle": {
+
+                    },
                     "key": 2
                 }
             ],
@@ -46,11 +54,21 @@
                         "replics": [
                             {
                                 "author": "player",
-                                "text": "how is it going?"
+                                "text": "how is it going?",
+                                "image": "/images/characters/character-1/main.png",
+                                "imageStyle": {
+
+                                },
+                                "key": 1
                             },
                             {
                                 "author": "character 1",
-                                "text": "it ok"
+                                "text": "it ok",
+                                "image": "/images/characters/character-1/main.png",
+                                "imageStyle": {
+
+                                },
+                                "key": 1
                             }
                         ],
                         "answers": []
@@ -93,11 +111,19 @@
                 {
                     "author": "character 1",
                     "text": "hello, player",
+                    "image": "/images/characters/character-1/main.png",
+                    "imageStyle": {
+
+                    },
                     "key": 1
                 },
                 {
                     "author": "player",
                     "text": "hello, character",
+                    "image": "/images/characters/character-1/main.png",
+                    "imageStyle": {
+
+                    },
                     "key": 2
                 }
             ],
@@ -115,11 +141,20 @@
                         "replics": [
                             {
                                 "author": "player",
-                                "text": "Are you okay?"
+                                "text": "Are you okay?",
+                                "image": "/images/characters/character-1/main.png",
+                                "imageStyle": {
+
+                                },
+                                "key": ""
                             },
                             {
                                 "author": "character 1",
-                                "text": "No, ya zaebalsya"
+                                "text": "No, ya zaebalsya",
+                                "image": "/images/characters/character-1/main.png",
+                                "imageStyle": {
+
+                                }
                             }
                         ],
                         "answers": []

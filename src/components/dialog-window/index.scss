@@ -2,18 +2,66 @@
 
 .dialog-window {
 	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	z-index: 100;
 
-	&__container {
+	&__replic {
 		position: fixed;
+		top: 0;
 		left: 0;
 		right: 0;
 		bottom: 0;
-		height: 20vh;
 		z-index: 100;
+		pointer-events: none;
+
+		&.active {
+			pointer-events: auto;
+
+			.dialog-window {
+				&__replic-container {
+					opacity: 1;
+				}
+
+				&__author-image {
+					opacity: 1;
+				}
+			}
+		}
+
+		// animations
+		.app-animated & {
+			.dialog-window {
+				&__replic-container {
+					opacity: 0;
+					transition-delay: 0s;
+					transition: opacity 0.3s;
+				}
+			}
+
+			&.active {
+				.dialog-window {
+					&__replic-container {
+						opacity: 1;
+						transition-delay: 0.3s;
+					}
+				}
+			}
+		}
+	}
+
+	&__replic-container {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		min-height: 20vh;
 		background-color: rgba($color-black, 0.5);
 		color: $color-white;
 		padding: 20px 30px;
+		opacity: 0;
 	}
 
 	&__overlay {
@@ -71,6 +119,21 @@
 		&_big {
 			font-size: 30px;
 			line-height: 36px;
+		}
+	}
+
+	&__author-image {
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: rgba($color-black, 0.3);
+		opacity: 0;
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
 		}
 	}
 }
